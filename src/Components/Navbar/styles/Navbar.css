@@ -1,0 +1,42 @@
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: var(--font_Color);
+}
+
+.active {
+  color: white;
+  background-color: var(--main_Color);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.Lists {
+  border-bottom: 1px solid var(--border);
+  padding: 20px 30px;
+}
+
+.Navbar {
+  overflow-y: auto;
+  padding-block: 20px;
+  width: clamp(300px, 23vw, 800px);
+  max-height: 100vh;
+  position: sticky;
+  top: 100px;
+  /* box-shadow: var(--box_shadow); */
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  padding: max(2.9vw, 20px) 15px;
+}
+
+.ekGhantiImage {
+  width: 300px;
+}

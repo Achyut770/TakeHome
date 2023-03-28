@@ -1,0 +1,77 @@
+.MainDashboardTop {
+  width: 100%;
+  padding: max(2.5vw, 20px);
+  background-color: white;
+  box-sizing: border-box;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Dashbord TopTop */
+
+.dashboardTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+label {
+  width: max(30%, 200px);
+}
+
+input {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid var(--font_Color);
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+/* //Dashboard Top */
+
+.assignedTo {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid var(--font_Color);
+  max-height: 120px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Dashboard Top Bottom */
+
+button {
+  height: 50px;
+  border-radius: 30px;
+  background-color: var(--main_Color);
+  outline: none;
+  width: max(40%, 100px);
+  cursor: pointer;
+  color: white;
+  font-size: 1.05rem;
+}
+
+.bottonContainer {
+  width: max(30%, 200px);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.dateStatus {
+  width: max(90%, 200px);
+}
+
+.reset {
+  background-color: red;
+}

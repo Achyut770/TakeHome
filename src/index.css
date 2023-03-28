@@ -1,13 +1,16 @@
-body {
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+:root {
+  --bg_Color: rgb(212, 209, 209);
+  --font_Color: rgb(105, 103, 103);
+  --box_shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  --border: rgb(187, 182, 182);
+  --main_Color: rgb(0, 110, 255);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  color: var(--font_Color);
 }
