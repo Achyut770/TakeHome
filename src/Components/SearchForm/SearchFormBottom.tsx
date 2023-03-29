@@ -61,13 +61,15 @@ const SearchFoomBotytom = ({ input, handleChange, fromTicket }: Bottom) => {
               fromTicket
                 ? exportToExcel("my-table", "mydata")
                 : navigateToTicketAndDownloadExcel()
-            }>
+            }
+          >
             {fromTicket ? "Export Ticket" : "Export"}
           </div>
           {fromTicket ? null : (
             <div
               className="exportViewTickets"
-              onClick={() => navigate("/tickets")}>
+              onClick={() => navigate("/tickets")}
+            >
               View Tickets
             </div>
           )}

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import TicketContainerApi from "../../ContextApi/TicketContainerApi";
 import { TicketData } from "../Tickets/Interface/TicketInterface";
 import "./styles/AddTheTicket.css";
-import { projectArray } from "../MainDashBoard/SearchFormMiddle";
+import { projectArray } from "../SearchForm/SearchFormMiddle";
 interface InputState extends TicketData {
   [key: string]: string | number | undefined;
 }

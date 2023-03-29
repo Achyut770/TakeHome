@@ -6,27 +6,27 @@ export let Data: ChartData[] = [
     datasets: [
       {
         data: [30, 20, 50],
-        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+        backgroundColor: ["red", "yellow", "green"],
         hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
       },
     ],
   },
   {
-    labels: ["Apples", "Oranges", "Bananas"],
+    labels: ["Football", "Cricket", "VolleyBall"],
     datasets: [
       {
-        data: [30, 20, 50],
-        backgroundColor: ["#FF6384", "#000000", "#FFCE56"],
+        data: [100, 20, 50],
+        backgroundColor: ["blue", "#000000", "#FFCE56"],
         hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
       },
     ],
   },
   {
-    labels: ["Apples", "Oranges", "Bananas"],
+    labels: ["Esewa", "Khalti", "Paypal"],
     datasets: [
       {
-        data: [30, 20, 50],
-        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+        data: [70, 20, 50],
+        backgroundColor: ["green", "purple", "orange"],
         hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
       },
     ],

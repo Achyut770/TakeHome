@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { TicketData } from "../Components/Tickets/Interface/TicketInterface";
-import { input } from "../Components/MainDashBoard/Interface/FormsProps";
+import { input } from "../Components/SearchForm/Interface/FormsProps";
 
 export interface TicketContainerApiInterface {
   tickets: TicketData[];
