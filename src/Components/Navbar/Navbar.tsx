@@ -10,30 +10,43 @@ const Navbar = () => {
     {
       route: "/",
       name: "Main Dashboard",
+      fontCss: "fa-solid fa-table-columns",
     },
     {
       route: "/user",
+      fontCss: "fa-solid fa-user",
       name: "User",
     },
+
     {
       route: "/groups",
+      fontCss: "fa-solid fa-user-group",
       name: "Groups",
     },
     {
       route: "/tickets",
+      fontCss: "fa-solid fa-diagram-project",
       name: "Tickets",
     },
     {
+      route: "/ticketstatus",
+      fontCss: "fa-solid fa-person-running",
+      name: "Ticket Status",
+    },
+    {
       route: "/grosdfups",
-      name: "sdf",
+      fontCss: "fa-solid fa-user-secret",
+      name: "Role",
     },
     {
       route: "/sdf",
-      name: "Groupssdf",
+      name: "Project",
+      fontCss: "fa-solid fa-user",
     },
     {
       route: "/groups",
-      name: "Grosdfsdups",
+      name: "Sms / Email",
+      fontCss: "fa-solid fa-comments",
     },
   ];
   return (
@@ -50,6 +63,9 @@ const Navbar = () => {
                       : " Lists"
                   }
                 >
+                  <span>
+                    <i className={item.fontCss} />
+                  </span>
                   <span> {item.name}</span>
                 </div>
               </NavLink>

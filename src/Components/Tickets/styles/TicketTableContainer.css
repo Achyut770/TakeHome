@@ -1,0 +1,102 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+  margin-top: 30px;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+tr {
+  min-width: 200px;
+}
+
+th {
+  background-color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* styles for created by column */
+td:nth-child(9) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 150px;
+}
+
+/* styles for project column */
+td:nth-child(10) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 150px;
+}
+
+/* styles for sub-vertical column */
+td:nth-child(11) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.trash {
+  color: red;
+}
+
+.areYouSure {
+  font-size: 1.3rem;
+  color: black;
+}
+.yesNo {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.yesAndNo {
+  padding: 10px 20px;
+  background-color: var(--main_Color);
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.DeleteContainer {
+  height: 150px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+i {
+  cursor: pointer;
+}
+
+/* styles for created and date columns */
+td:nth-child(4),
+td:nth-child(5) {
+  font-size: 16px;
+}
+
+/* styles for the table container */
+.table-container {
+  height: 400px;
+  overflow: auto;
+}
