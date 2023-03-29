@@ -13,7 +13,10 @@ const TopNavbar = () => {
           />
         </div>
         <div className="NAL">
-          <div>No</div>
+          <div className="Notification">
+            <i className="fa-solid fa-bell"></i>
+            <div className="Number">7</div>
+          </div>
           <div>Admin</div>
           <div>LogOut</div>
         </div>

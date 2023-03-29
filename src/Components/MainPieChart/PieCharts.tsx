@@ -1,5 +1,3 @@
-import React from "react";
-import PieChart from "../../PieChart/PieChart";
 import { Data } from "../../PieData";
 import IndvPieChart from "./IndvPieChart";
 import { ChartData } from "./Interfaces/Interface";

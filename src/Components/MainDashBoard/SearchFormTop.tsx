@@ -1,10 +1,7 @@
 import React from "react";
 import { FormsPropsTopAndMiddle } from "./Interface/FormsProps";
 
-const MainDashboradTopTop = ({
-  input,
-  handleChange,
-}: FormsPropsTopAndMiddle) => {
+const SearchFormTop = ({ input, handleChange }: FormsPropsTopAndMiddle) => {
   let AssiggnedTo = [
     "Ekghanti",
     "Sapna Sharma",
@@ -36,4 +33,4 @@ const MainDashboradTopTop = ({
   );
 };
 
-export default MainDashboradTopTop;
+export default SearchFormTop;
