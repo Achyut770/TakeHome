@@ -1,27 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { input } from "./Interface/FormsProps";
-import MainDashBoardToMiddle from "./MainDashBoardToMiddle";
-import MainDashboardTopBottom from "./MainDashboardTopBottom";
-import MainDashboradTopTop from "./MainDashboradTopTop";
+import SearchFormMiddle from "./SearchFormMiddle";
+import SearchFormBottom from "./SearchFormBottom";
+import SearchFormTop from "./SearchFormTop";
+import "./styles/SearchForm.css";
+import TicketContainerApi from "../../ContextApi/TicketContainerApi";
 
-import "./styles/MainDashboardTops.css";
-
-const MainDashboardTops = ({ fromTicket }: { fromTicket: boolean }) => {
+const SearchForm = ({ fromTicket }: { fromTicket: boolean }) => {
   const [inputValue, setInput] = useState<input>({
-    assignedBy: "",
+    createdBy: "",
     group: "",
     assignedTo: "",
     project: "",
     vertical: "",
     subVertical: "",
-    from: Date(),
-    to: Date(),
-    totalTickets: "",
+    from: "",
+    to: "",
+    customerNumber: "",
   });
+
+  const value = useContext(TicketContainerApi);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setInput((prev) => {
+    setInput((prev: input) => {
       return {
         ...prev,
         [name]: value,
@@ -31,24 +33,24 @@ const MainDashboardTops = ({ fromTicket }: { fromTicket: boolean }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Form Submitted");
+    value?.fetchSelectedTicket(inputValue);
   };
 
   return (
     <>
       <div className="MainDashboardTop">
         <form onSubmit={handleSubmit}>
-          <MainDashboradTopTop
+          <SearchFormTop
             input={inputValue}
             setInput={setInput}
             handleChange={handleChange}
           />
-          <MainDashBoardToMiddle
+          <SearchFormMiddle
             setInput={setInput}
             input={inputValue}
             handleChange={handleChange}
           />
-          <MainDashboardTopBottom
+          <SearchFormBottom
             input={inputValue}
             fromTicket={fromTicket}
             handleChange={handleChange}
@@ -59,4 +61,4 @@ const MainDashboardTops = ({ fromTicket }: { fromTicket: boolean }) => {
   );
 };
 
-export default MainDashboardTops;
+export default SearchForm;

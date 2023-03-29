@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AddTheTicket from "../Components/AddTheTicket/AddTheTicket";
-import MainDashboardTops from "../Components/MainDashBoard/MainDashboardTops";
 import TicketsTableContainer from "../Components/Tickets/TicketsTableContainer";
+import SearchForm from "../Components/MainDashBoard/SearchForm";
 
 const Tickets = () => {
   const [addTicketShow, setAddTicketShow] = useState(false);
@@ -13,14 +13,17 @@ const Tickets = () => {
   return (
     <>
       {addTicketShow ? (
-        <AddTheTicket setClose={() => showHideAddTicket(false)} />
+        <AddTheTicket
+          setClose={() => showHideAddTicket(false)}
+          fromEdit={false}
+        />
       ) : null}
       <div className="addTheTicketContainer">
         <div className="addTheTicket" onClick={() => showHideAddTicket(true)}>
           Add The Ticket{" "}
         </div>
       </div>{" "}
-      <MainDashboardTops fromTicket={true} />
+      <SearchForm fromTicket={true} />
       <TicketsTableContainer />
     </>
   );

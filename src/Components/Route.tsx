@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import ManiDahboard from "../Pages/ManiDahboard";
-import User from "../Pages/User";
 import Tickets from "../Pages/Tickets";
 import { Routes, Route } from "react-router-dom";
+import Error from "./Error/Error";
 
 interface RoutesInterface {
   path: string;
@@ -16,12 +16,12 @@ const NavRoutes = () => {
       element: <ManiDahboard />,
     },
     {
-      path: "/user",
-      element: <User />,
-    },
-    {
       path: "/tickets",
       element: <Tickets />,
+    },
+    {
+      path: "*",
+      element: <Error />,
     },
   ];
   return (

@@ -1,12 +1,22 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TicketContainerApi from "../../ContextApi/TicketContainerApi";
 import { TicketData } from "../Tickets/Interface/TicketInterface";
 import "./styles/AddTheTicket.css";
+import { projectArray } from "../MainDashBoard/SearchFormMiddle";
 interface InputState extends TicketData {
-  [key: string]: string | number;
+  [key: string]: string | number | undefined;
 }
 
-const AddTheTicket = ({ setClose }: { setClose: () => void }) => {
+const AddTheTicket = ({
+  setClose,
+  fromEdit,
+  ticketIndex,
+}: {
+  setClose: () => void;
+  fromEdit: boolean;
+  ticketIndex?: number;
+}) => {
+  const [showProject, setShowProject] = React.useState(false);
   const [input, setInput] = useState<InputState>({
     ticketId: 0,
     agentCustomer: 0,
@@ -47,7 +57,7 @@ const AddTheTicket = ({ setClose }: { setClose: () => void }) => {
       name: "project",
     },
     {
-      title: "assignedTy",
+      title: "Assigned To",
       name: "assignedTo",
     },
     {
@@ -56,19 +66,56 @@ const AddTheTicket = ({ setClose }: { setClose: () => void }) => {
     },
     {
       title: "Wallet",
-      name: "wallet",
+      name: "walletId",
     },
   ];
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  useEffect(() => {
+    if (ticketIndex === undefined) return;
+    const data = value?.tickets[ticketIndex];
+    if (!data) return;
+    console.log(data);
+
+    setInput(() => {
+      return {
+        ...data,
+      };
+    });
+  }, []);
+
+  const setProject = (items: string) => {
+    setInput((prev) => {
+      return {
+        ...prev,
+        project: items,
+      };
+    });
+  };
+
+  const handleSubmitForEdit = () => {
+    if (ticketIndex === undefined) return;
     try {
-      // get the current date and time
+      const ticketContainer = localStorage.getItem("TicketContainer");
+      if (ticketContainer) {
+        let ticketData = JSON.parse(ticketContainer);
+        ticketData[ticketIndex] = {
+          ...ticketData[ticketIndex],
+          ...input,
+        };
+        localStorage.setItem("TicketContainer", JSON.stringify(ticketData));
+        value?.fetchTicketContainer();
+        setClose();
+      }
+    } catch (error) {
+      alert("Something Went Wrong");
+    }
+  };
+  const handleSubmitForAdd = () => {
+    try {
       const currentDate = new Date();
       const date = currentDate.toLocaleDateString();
       const time = currentDate.toLocaleTimeString();
 
-      // add the date and time to the input object
       let ticketContainer = localStorage.getItem("TicketContainer");
       let tickets: TicketData[] = [];
       let ticketId = 0;
@@ -94,10 +141,8 @@ const AddTheTicket = ({ setClose }: { setClose: () => void }) => {
         ticketId,
       };
 
-      // Add the new ticket to the array of tickets
       tickets.push(updatedInput);
 
-      // Save the updated array of tickets to localStorage
       localStorage.setItem("TicketContainer", JSON.stringify(tickets));
       setClose();
       value?.fetchTicketContainer();
@@ -105,6 +150,18 @@ const AddTheTicket = ({ setClose }: { setClose: () => void }) => {
       console.log(error);
       alert("Something Went Wrong");
     }
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (fromEdit) {
+      {
+        handleSubmitForEdit();
+        return;
+      }
+    }
+    handleSubmitForAdd();
   };
 
   return (
@@ -116,24 +173,41 @@ const AddTheTicket = ({ setClose }: { setClose: () => void }) => {
         </div>
         <form onSubmit={handleSubmit} className="addToTicketForm">
           {dataInput.map(({ title, name }) => {
-            return (
-              <label key={name} className="addTheTicketLabel">
-                <div>{title}</div>
-                <input
-                  className="addTheTicketInput"
-                  required
-                  name={name}
-                  value={input[name]}
-                  onChange={(e) =>
-                    setInput({ ...input, [name]: e.target.value })
-                  }
-                />
-              </label>
-            );
+            if (name)
+              return (
+                <label key={name} className="addTheTicketLabel">
+                  <div>{title}</div>
+                  <input
+                    className="addTheTicketInput"
+                    onClick={() =>
+                      name === "project" ? setShowProject((x) => !x) : null
+                    }
+                    required
+                    name={name}
+                    value={input[name]}
+                    onChange={(e) =>
+                      name === "project"
+                        ? null
+                        : setInput({ ...input, [name]: e.target.value })
+                    }
+                  />
+                  {showProject && name === "project" ? (
+                    <div>
+                      {projectArray.map((items, index) => {
+                        return (
+                          <div onClick={() => setProject(items)} key={index}>
+                            {items}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : null}
+                </label>
+              );
           })}
           <div className="addToTextButtonContainer">
             <button className="buttonAddToText" type="submit">
-              Submit
+              {fromEdit ? "Save Changes" : "Submit"}
             </button>
           </div>
         </form>

@@ -8,10 +8,30 @@
   position: fixed;
   top: 0px;
   background-color: white;
+  z-index: 4;
 }
 
 .NAL {
   display: flex;
   flex-direction: row;
   gap: 30px;
+}
+
+.Notification {
+  position: relative;
+}
+
+.Number {
+  font-size: 0.7rem;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: red;
+  border-radius: 50%;
 }

@@ -8,7 +8,7 @@ table {
 
 th,
 td {
-  border: 1px solid black;
+  border: 1px solid var(--border);
   padding: 8px;
   font-size: 14px;
   text-align: center;
@@ -16,14 +16,14 @@ td {
 
 tr {
   min-width: 200px;
+  padding: 10px;
 }
-
+.subVertical {
+  display: flex;
+  justify-content: space-around;
+}
 th {
   background-color: white;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
 }
 
 /* styles for created by column */
@@ -34,6 +34,18 @@ td:nth-child(9) {
   max-width: 150px;
 }
 
+.emailAddress {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 55;
+  width: min(300px, 95%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--boxShadow);
+}
 /* styles for project column */
 td:nth-child(10) {
   overflow: hidden;
@@ -42,6 +54,9 @@ td:nth-child(10) {
   max-width: 150px;
 }
 
+.noTickets {
+  height: 100px;
+}
 /* styles for sub-vertical column */
 td:nth-child(11) {
   overflow: hidden;

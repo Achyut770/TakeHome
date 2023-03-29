@@ -7,11 +7,7 @@ interface Bottom extends FormProps {
   fromTicket: boolean;
 }
 
-const MainDashboardTopBottom = ({
-  input,
-  handleChange,
-  fromTicket,
-}: Bottom) => {
+const SearchFoomBotytom = ({ input, handleChange, fromTicket }: Bottom) => {
   const navigate = useNavigate();
 
   const navigateToTicketAndDownloadExcel = () => {
@@ -65,15 +61,13 @@ const MainDashboardTopBottom = ({
               fromTicket
                 ? exportToExcel("my-table", "mydata")
                 : navigateToTicketAndDownloadExcel()
-            }
-          >
+            }>
             {fromTicket ? "Export Ticket" : "Export"}
           </div>
           {fromTicket ? null : (
             <div
               className="exportViewTickets"
-              onClick={() => navigate("/tickets")}
-            >
+              onClick={() => navigate("/tickets")}>
               View Tickets
             </div>
           )}
@@ -83,4 +77,4 @@ const MainDashboardTopBottom = ({
   );
 };
 
-export default MainDashboardTopBottom;
+export default SearchFoomBotytom;

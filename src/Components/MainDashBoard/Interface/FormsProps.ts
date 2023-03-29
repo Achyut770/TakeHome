@@ -10,7 +10,7 @@ export interface FormsPropsTopAndMiddle extends FormProps {
 }
 
 export interface input {
-  assignedBy: string;
+  createdBy: string;
   group: string;
   assignedTo: string;
   project: string;
@@ -18,5 +18,5 @@ export interface input {
   subVertical: string;
   from: string;
   to: string;
-  totalTickets: string;
+  customerNumber: string;
 }

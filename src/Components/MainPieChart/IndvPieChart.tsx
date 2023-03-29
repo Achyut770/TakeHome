@@ -1,6 +1,6 @@
 import React from "react";
 import PieChart from "../../PieChart/PieChart";
-import { ChartData, ChartDataSet } from "./Interfaces/Interface";
+import { ChartData } from "./Interfaces/Interface";
 
 interface Props {
   items: ChartData;
@@ -18,8 +18,7 @@ const IndvPieChart = ({ items }: Props) => {
                 style={{
                   background: items.datasets[0].backgroundColor[index],
                 }}
-                className="PieChartBox"
-              ></div>
+                className="PieChartBox"></div>
             </div>
           );
         })}

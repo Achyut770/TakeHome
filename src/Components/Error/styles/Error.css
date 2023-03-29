@@ -1,0 +1,17 @@
+.pageNotFoundContainer {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.pageNotFound {
+  font-size: 5rem;
+}
+
+.backToDashBoard {
+  padding: 10px 20px;
+  background-color: var(--main_Color);
+  color: white;
+  border-radius: 20px;
+}

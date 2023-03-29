@@ -13,4 +13,6 @@ export interface TicketData {
   vertical: string;
   assignedTo: string;
   ticketStatus: string;
+  hide?: number;
+  totalTickets?: string;
 }
