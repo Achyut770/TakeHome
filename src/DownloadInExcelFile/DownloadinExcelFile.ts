@@ -1,28 +1,39 @@
-import XLSX from "xlsx";
+import { utils, write } from "xlsx";
+export const exportToExcel = (tableId: string, fileName: string) => {
+  const table = document.getElementById(tableId);
 
-interface TableToExcelProps {
-  tableId: string;
-  fileName: string;
-}
+  if (!table) {
+    console.error(`Table with ID "${tableId}" not found`);
+    return;
+  }
 
-const downloadTableAsExcel = ({ tableId, fileName }: TableToExcelProps) => {
-  const table = document.getElementById(tableId) as HTMLTableElement;
-  const wb = XLSX.utils.table_to_book(table);
-  const wbBinary = XLSX.write(wb, { bookType: "xlsx", type: "binary" });
-  const blob = new Blob([s2ab(wbBinary)], {
+  const workbook = utils.table_to_book(table);
+
+  if (Object.keys(workbook.Sheets).length === 0) {
+    console.error(`Table with ID "${tableId}" is empty`);
+    return;
+  }
+
+  const wbout = write(workbook, { bookType: "xlsx", type: "binary" });
+
+  const s2ab = (s: string) => {
+    const buf = new ArrayBuffer(s.length);
+    const view = new Uint8Array(buf);
+    for (let i = 0; i < s.length; i += 1) {
+      view[i] = s.charCodeAt(i) & 0xff;
+    }
+    return buf;
+  };
+
+  const blob = new Blob([s2ab(wbout)], {
     type: "application/octet-stream",
   });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = fileName;
-  link.click();
-};
 
-const s2ab = (s: string) => {
-  const buf = new ArrayBuffer(s.length);
-  const view = new Uint8Array(buf);
-  for (let i = 0; i < s.length; i++) {
-    view[i] = s.charCodeAt(i) & 0xff;
-  }
-  return buf;
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.setAttribute("download", `${fileName}.xlsx`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 };

@@ -1,7 +1,26 @@
 import React from "react";
+import { exportToExcel } from "../../DownloadInExcelFile/DownloadinExcelFile";
 import { FormProps } from "./Interface/FormsProps";
+import { useNavigate } from "react-router-dom";
 
-const MainDashboardTopBottom = ({ input, handleChange }: FormProps) => {
+interface Bottom extends FormProps {
+  fromTicket: boolean;
+}
+
+const MainDashboardTopBottom = ({
+  input,
+  handleChange,
+  fromTicket,
+}: Bottom) => {
+  const navigate = useNavigate();
+
+  const navigateToTicketAndDownloadExcel = () => {
+    navigate("/tickets");
+    setTimeout(() => {
+      alert("Click the export ticket");
+    }, 500);
+  };
+
   return (
     <>
       <div className="dashboardTop">
@@ -36,12 +55,28 @@ const MainDashboardTopBottom = ({ input, handleChange }: FormProps) => {
           />
         </label>
         <div className="bottonContainer">
-          <button type="submit"> Submit </button>
+          <button type="submit"> {fromTicket ? "Search" : "Submit"} </button>
           <button type="reset" className="reset">
-            Reset
+            {fromTicket ? "Clear" : "Reset"}
           </button>
-          <button>Export</button>
-          <button>View Tickets</button>
+          <div
+            className="exportViewTickets"
+            onClick={() =>
+              fromTicket
+                ? exportToExcel("my-table", "mydata")
+                : navigateToTicketAndDownloadExcel()
+            }
+          >
+            {fromTicket ? "Export Ticket" : "Export"}
+          </div>
+          {fromTicket ? null : (
+            <div
+              className="exportViewTickets"
+              onClick={() => navigate("/tickets")}
+            >
+              View Tickets
+            </div>
+          )}
         </div>
       </div>
     </>

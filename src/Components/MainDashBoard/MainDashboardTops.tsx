@@ -6,7 +6,7 @@ import MainDashboradTopTop from "./MainDashboradTopTop";
 
 import "./styles/MainDashboardTops.css";
 
-const MainDashboardTops = () => {
+const MainDashboardTops = ({ fromTicket }: { fromTicket: boolean }) => {
   const [inputValue, setInput] = useState<input>({
     assignedBy: "",
     group: "",
@@ -50,6 +50,7 @@ const MainDashboardTops = () => {
           />
           <MainDashboardTopBottom
             input={inputValue}
+            fromTicket={fromTicket}
             handleChange={handleChange}
           />
         </form>

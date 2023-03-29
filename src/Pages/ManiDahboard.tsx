@@ -6,7 +6,7 @@ import PieChartinNumber from "../Components/PieChartInNumber/PieChartinNumber";
 const ManiDahboard = () => {
   return (
     <>
-      <MainDashboardTops />
+      <MainDashboardTops fromTicket={false} />
       <MyComponent />
       <PieChartinNumber />
     </>
