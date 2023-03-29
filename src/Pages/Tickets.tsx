@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AddTheTicket from "../Components/AddTheTicket/AddTheTicket";
 import TicketsTableContainer from "../Components/Tickets/TicketsTableContainer";
-import SearchForm from "../Components/MainDashBoard/SearchForm";
+import SearchForm from "../Components/SearchForm/SearchForm";
 
 const Tickets = () => {
   const [addTicketShow, setAddTicketShow] = useState(false);

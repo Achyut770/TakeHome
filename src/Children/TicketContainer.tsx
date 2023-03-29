@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import { TicketData } from "../Components/Tickets/Interface/TicketInterface";
 import TicketContainerApi from "../ContextApi/TicketContainerApi";
-import { input } from "../Components/MainDashBoard/Interface/FormsProps";
+import { input } from "../Components/SearchForm/Interface/FormsProps";
 
 const TicketContainer = ({ children }: { children: ReactNode }) => {
   const [tickets, setTickets] = useState<TicketData[]>([]);

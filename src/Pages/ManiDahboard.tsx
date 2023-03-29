@@ -1,13 +1,13 @@
 import React from "react";
-import MainDashboardTops from "../Components/MainDashBoard/SearchForm";
-import MyComponent from "../Components/MainPieChart/PieCharts";
+import MainDashboardTops from "../Components/SearchForm/SearchForm";
+import PieCharts from "../Components/MainPieChart/PieCharts";
 import PieChartinNumber from "../Components/PieChartInNumber/PieChartinNumber";
 
 const ManiDahboard = () => {
   return (
     <>
       <MainDashboardTops fromTicket={false} />
-      <MyComponent />
+      <PieCharts />
       <PieChartinNumber />
     </>
   );

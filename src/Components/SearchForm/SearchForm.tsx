@@ -5,8 +5,9 @@ import SearchFormBottom from "./SearchFormBottom";
 import SearchFormTop from "./SearchFormTop";
 import "./styles/SearchForm.css";
 import TicketContainerApi from "../../ContextApi/TicketContainerApi";
-
+import { useNavigate } from "react-router-dom";
 const SearchForm = ({ fromTicket }: { fromTicket: boolean }) => {
+  const navigate = useNavigate();
   const [inputValue, setInput] = useState<input>({
     createdBy: "",
     group: "",
@@ -34,6 +35,7 @@ const SearchForm = ({ fromTicket }: { fromTicket: boolean }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     value?.fetchSelectedTicket(inputValue);
+    navigate("/tickets");
   };
 
   return (
